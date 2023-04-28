@@ -131,6 +131,7 @@
  <h2>9. Gel Polish</h2> 
  <h2>10. Top Coat</h2>  
  <h2>11. Cuticle Oil</h2>  
+ <img src="tywn_nailforms.jpg" alt="Nail Forms" width="700" height="500">  
 </div>
 
 <div class="footer">

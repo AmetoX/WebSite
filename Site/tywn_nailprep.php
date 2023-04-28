@@ -130,7 +130,8 @@
  <h2>8. Nail Dehydrator</h2> 
  <h2>9. Primer</h2> 
  <h2>10. UV Lamp</h2> 
- <h2>11. Base Coat</h2>     
+ <h2>11. Base Coat</h2>   
+ <img src="tywn_nailprep.jpg" alt="Nail Prep" width="700" height="600">  
 </div>
 
 <div class="footer">
