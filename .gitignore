@@ -397,4 +397,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-Site/vendor
+Site/vendor/
