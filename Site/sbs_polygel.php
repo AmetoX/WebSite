@@ -29,16 +29,16 @@
   <!-- The slideshow -->
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="nailprep.jpg" alt="Nail Prep" width="1100" height="200">
+      <img src="images/nailprep.jpg" alt="Nail Prep" width="1100" height="200">
     </div>
     <div class="carousel-item">
-      <img src="polygel.jpg" alt="Polygel" width="1100" height="200">
+      <img src="images/polygel.jpg" alt="Polygel" width="1100" height="200">
     </div>
     <div class="carousel-item">
-      <img src="forms.jpg" alt="Forms" width="1100" height="200">
+      <img src="images/forms.jpg" alt="Forms" width="1100" height="200">
     </div>
     <div class="carousel-item">
-      <img src="tips.jpg" alt="Tips" width="1100" height="200">
+      <img src="images/tips.jpg" alt="Tips" width="1100" height="200">
     </div>
   </div>
   
@@ -123,15 +123,15 @@
 <h2>1. Nail Prep </h2>
 	<?php $galerii = array(
 		array("Title" => "2. Reusable Dual Nail Tips", "Title_description" => " The trick with fitting dual tip is that you need to rise the dual tip up a bit and then to make sure it fits from sidewall to sidewall. The reason you need to rise up the form slightly is you need to save some space for the product to lie in it.
-        The way you need to hold it and rise the free end for about 10-degree Engle. Check if all ten fingernails has a fitting dual tip.", "gallery_iamge" => "dualtips.jpg" ),
+        The way you need to hold it and rise the free end for about 10-degree Engle. Check if all ten fingernails has a fitting dual tip.", "gallery_iamge" => "images/dualtips.jpg" ),
 		array("Title" => "3. Apply Polygel To The Reusable Dual Nail Tips", "Title_description" => "Take a medium-sized bead with a gel brush and wet your brush with slip solution. And then use the brush to place the bead on the inner side of the dual tip, move it gently and create the length of the nail.
         Fill sides and check if there is no product missing (don't make it too thin or too thick). After preparing the dual tip gently apply the dual tip to 2/3 of the nail, do not do it all the way to the cuticle. 
-        Then cure in an LED/UV lamp for 60-120 sec. You can use a nail clipper for more support when curing.", "gallery_iamge" => "fill_dualtips.jpg" ),
+        Then cure in an LED/UV lamp for 60-120 sec. You can use a nail clipper for more support when curing.", "gallery_iamge" => "images/fill_dualtips.jpg" ),
         array("Title" => "4. Polygel Overlay", "Title_description" => "You can gently use a pinching tool on the sides of the dual tip, and it will pop off. After removing the dual tip take a bead of polygel and apply it to the nail and lightly pillow the bead as close to the cuticle area without actually touching it.
-        Then, gently bring it down to the tip and cure the nails in the LED/UV lamp again. After the polygel is set, take a lint free wipe dipped in alcohol and wipe the nails on the top and bottom to remove the stiky part.", "gallery_iamge" => "polygel_overlay.jpg" ),
-        array("Title" => "5. Shape And Buff", "Title_description" => " Buff the surface. Then shape the nail as you like. When you're happy with the form you achieved, you should brush the dust off your nails and hand. After that take a lint free wipe dipped in alcohol and wipe the nails to make sure there's no dust remaining on the nail. ", "gallery_iamge" => "nail_shapes.jpg" ),
-        array("Title" => "6. Color And Top Coat", "Title_description" => "  Choose a color you want, after applying it, cure the nails in the LED/UV lamp 60 seconds. You may need more than 1 coat. Then pick your top coat, apply it and cure it in the LED/UV lamp for 60-120 seconds.", "gallery_iamge" => "topcoat.jpg" ),
-        array("Title" => "7. Cuticle Oil", "Title_description" => " Apply the cuticle oil on the cuticles and then massage it until it gets in your skin.", "gallery_iamge" => "cuticle_oil.jpg" ),
+        Then, gently bring it down to the tip and cure the nails in the LED/UV lamp again. After the polygel is set, take a lint free wipe dipped in alcohol and wipe the nails on the top and bottom to remove the stiky part.", "gallery_iamge" => "images/polygel_overlay.jpg" ),
+        array("Title" => "5. Shape And Buff", "Title_description" => " Buff the surface. Then shape the nail as you like. When you're happy with the form you achieved, you should brush the dust off your nails and hand. After that take a lint free wipe dipped in alcohol and wipe the nails to make sure there's no dust remaining on the nail. ", "gallery_iamge" => "images/nail_shapes.jpg" ),
+        array("Title" => "6. Color And Top Coat", "Title_description" => "  Choose a color you want, after applying it, cure the nails in the LED/UV lamp 60 seconds. You may need more than 1 coat. Then pick your top coat, apply it and cure it in the LED/UV lamp for 60-120 seconds.", "gallery_iamge" => "images/topcoat.jpg" ),
+        array("Title" => "7. Cuticle Oil", "Title_description" => " Apply the cuticle oil on the cuticles and then massage it until it gets in your skin.", "gallery_iamge" => "images/cuticle_oil.jpg" ),
 	);
 	?>
 	<div class="col-sm-8">

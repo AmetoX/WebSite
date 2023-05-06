@@ -29,16 +29,16 @@
   <!-- The slideshow -->
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="nailprep.jpg" alt="Nail Prep" width="1100" height="200">
+      <img src="images/nailprep.jpg" alt="Nail Prep" width="1100" height="200">
     </div>
     <div class="carousel-item">
-      <img src="polygel.jpg" alt="Polygel" width="1100" height="200">
+      <img src="images/polygel.jpg" alt="Polygel" width="1100" height="200">
     </div>
     <div class="carousel-item">
-      <img src="forms.jpg" alt="Forms" width="1100" height="200">
+      <img src="images/forms.jpg" alt="Forms" width="1100" height="200">
     </div>
     <div class="carousel-item">
-      <img src="tips.jpg" alt="Tips" width="1100" height="200">
+      <img src="images/tips.jpg" alt="Tips" width="1100" height="200">
     </div>
   </div>
   

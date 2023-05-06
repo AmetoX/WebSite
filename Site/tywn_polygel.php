@@ -29,16 +29,16 @@
   <!-- The slideshow -->
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="nailprep.jpg" alt="Nail Prep" width="1100" height="200">
+      <img src="images/nailprep.jpg" alt="Nail Prep" width="1100" height="200">
     </div>
     <div class="carousel-item">
-      <img src="polygel.jpg" alt="Polygel" width="1100" height="200">
+      <img src="images/polygel.jpg" alt="Polygel" width="1100" height="200">
     </div>
     <div class="carousel-item">
-      <img src="forms.jpg" alt="Forms" width="1100" height="200">
+      <img src="images/forms.jpg" alt="Forms" width="1100" height="200">
     </div>
     <div class="carousel-item">
-      <img src="tips.jpg" alt="Tips" width="1100" height="200">
+      <img src="images/tips.jpg" alt="Tips" width="1100" height="200">
     </div>
   </div>
   
@@ -132,7 +132,7 @@
  <h2>10. Gel Polish</h2> 
  <h2>11. Top Coat</h2>  
  <h2>12. Cuticle Oil</h2>  
- <img src="tywn_polygel.jpg" alt="Polygel" width="700" height="600">
+ <img src="images/tywn_polygel.jpg" alt="Polygel" width="700" height="600">
 </div>
 
 <div class="footer">
