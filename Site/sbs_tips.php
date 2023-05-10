@@ -52,7 +52,7 @@
 </div>
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a href="#lab6.php" class="navbar-brand">NAILS101</a>
+    <a href="lab6.php" class="navbar-brand">NAILS101</a>
     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
     </button>
