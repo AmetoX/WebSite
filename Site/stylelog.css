@@ -1,0 +1,237 @@
+#grad {
+  height: 1080px;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(185, 183, 183),
+    rgb(37, 36, 36)
+  );
+}
+
+.paragraf_1 {
+  color: rgb(208, 13, 149);
+  border-left: 3px solid rgb(0, 0, 0);
+  border-right: 3px solid rgb(0, 0, 0);
+  font-size: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h2 {
+  color: rgb(29, 27, 27);
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 30px;
+}
+
+.titlu {
+  /*clasa */
+  color: rgb(7, 10, 195);
+  font-family: Georgia, "Times New Roman", Times, serif;
+  text-align: center;
+  border: 4px outset rgb(73, 71, 71);
+  margin: 0px auto;
+}
+
+/* #titlu1{ /*id , da override la clasa
+     color: rgb(7, 10, 195); 
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    border: 4px outset rgb(73, 71, 71);
+    padding: 0px 200px;
+  }
+  */
+
+.buton {
+  display: flex;
+  justify-content: flex-end;
+  background-color: rgba(128, 128, 128, 0.197);
+  font-size: 15px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.font {
+  font-size: 20px;
+  color: black;
+}
+
+.test {
+  color: black;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 30px;
+}
+
+.links {
+  color: black;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 20px;
+}
+
+.dropdown {
+  position: relative;
+  /*border-bottom:  3px outset black;*/
+  display: flex;
+  justify-content: flex-end;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 20px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.77);
+  min-width: 120px;
+  box-shadow: 0px 8px 16px 0px rgba(169, 164, 164, 0.2);
+  padding: 5px 10px;
+  font-size: 15px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  z-index: 1;
+  border: 4px outset rgb(73, 71, 71);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/*log in */
+
+.loginButton {
+  background-color: #afacac;
+  position: relative;
+  height: 40px; /* Set a height for the container so it's not collapsed */
+  position: relative;
+  top: 0;
+  right: 0;
+}
+
+.top-right-Loginbutton {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#loginBox {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #7a7474;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px #999;
+}
+
+#loginBox h2 {
+  margin-top: 0;
+}
+
+#loginBox label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+#loginBox input[type="text"],
+#loginBox input[type="password"] {
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: inset 0px 1px 2px #afacac;
+}
+
+#loginBox input[type="submit"] {  
+  float: left; /* add this line to float the button to the left */
+  background-color: #44bd48;
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#loginBox input[type="submit"]:hover {
+  background-color: #4dc253;
+}
+
+#closeBtn {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+}
+
+
+/*Sign up */
+
+#signupBox {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #7a7474;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px #999;
+}
+
+#signupBox h2 {
+  margin-top: 0;
+}
+
+#signupBox label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+#signupBox input[type="text"],
+#signupBox input[type="password"] {
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: inset 0px 1px 2px #afacac;
+}
+
+#signupBox input[type="submit"] {
+  background-color: #44bd48;
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#signupBox input[type="submit"]:hover {
+  background-color: #4dc253;
+}
+
+#closeSignupBtn {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+}
+
+#signupBtn{
+  float: right;
+  background-color: #239280c4;
+  color: rgb(0, 0, 0);
+  padding: 10px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* text */
+
+.textedit{
+
+}
+
