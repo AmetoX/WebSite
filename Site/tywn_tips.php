@@ -1,6 +1,6 @@
-<?php session_start();
- $_SESSION['user']='Admin';
- $_SESSION['user_image']='user_image.jpg';
+<?php
+  require("PhpPages/session_ini.php");
+  $_SESSION['current_page'] = 'tywn_tips.php';
 ?>
 
 <!DOCTYPE html>
@@ -9,6 +9,7 @@
   <title>NAILS101</title>
   <?php require "bootstrap.inc" ?>
   <link rel="stylesheet" href="tywn_style.css">
+  <link rel="stylesheet" type="text/css" href="stylelog.css">
 </head>
 <body>
 
@@ -94,50 +95,76 @@
         </ul>
         <ul class="nav navbar-nav ml-auto">
             <li class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-				<?php 
-					echo isset($_SESSION['user'])? $_SESSION['user'] : 'User';
-				?>
-				</a>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <a href="#" class="dropdown-item">Reports</a>
-                    <a href="<?php echo isset($_SESSION['user']) ? 'settings.php' : 'signin.php'; ?>" class="dropdown-item">
-						<?php
-							echo isset($_SESSION['user']) ? 'Settings' : 'Sign in';		
-						?>
-					</a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#"class="dropdown-item">
-						<?php 
-							echo isset($_SESSION['user'])? 'Logout' : 'Login';
-						?>
-					</a>
-                </div>
+                <!-- Prima sectiune -->
+                  <section> 
+                    <?php
+                      if(!$userLoggedIn){
+                        echo '<button id="loginBtn" class="loginButton">Log In</button>';
+                      }else{
+                        echo '<a href="PhpPages/logout.php">Logout</a>';
+                      }
+                    ?>
+                  </section>
+                    <!-- A 2a sectiune Log In Window -->
+                <section>
+                  <div id="loginBox">
+                    <form method="post" action="PhpPages/login.php">
+                      <h2>Login</h2>
+                      <label for="username">Username:</label>
+                      <input type="text" id="username" autocomplete="username" name="logusername">
+                      <label for="password">Password:</label>
+                      <input type="password" id="password" name="logpassword">
+                      <input type="submit" value="Log in">
+                    </form>
+                    <button id="closeBtn">Close</button>
+                    <button id="signupBtn">Sign Up</button>
+                  </div>
+                </section>
+
+                <!-- A 3a sectiune Sign Up Window -->
+                <section>
+                <div id="signupBox" style="display: none;">
+                    <form method="post" action="PhpPages/signup.php">
+                      <h2>Sign Up</h2>
+                      <label for="newUsername">Username:</label>
+                      <input type="text" id="newUsername" name="newUsername" autocomplete="username">
+                      <label for="newPassword">Password:</label>
+                      <input type="password" id="newPassword" name="newPassword">
+                      <input type="submit" value="Log in">
+                    </form>
+                    <button id="closeSignupBtn">Close</button>
+                  </div>
+                </section>
             </li>
         </ul>
     </div>
 </nav>
 
 <div class="container" >
-<h1>Things you will need for Nails made with Tips:</h1>
- <h2>1. UV Lamp</h2> 
- <h2>2. Nail Tips</h2> 
- <h2>3. Hard Gel</h2> 
- <h2>4. Slip Solution/Cleanser/Alcohol</h2> 
- <h2>5. Gel Brush</h2> 
- <h2>6. Nail Glue</h2> 
- <h2>7. Nail Files</h2>
- <h2>8. Dust Brush</h2>
- <h2>9. Lint Free Wipes</h2> 
- <h2>10. Gel Polish</h2> 
- <h2>11. Top Coat</h2>  
- <h2>12. Cuticle Oil</h2>  
+<form method="post" action="PhpPages/save.php">
+        <textarea <?php
+                if(!$userLoggedIn || $_SESSION['role'] !== "admin"){
+                  echo'disabled ';           
+                }             
+              ?>style="width: 100%;  background-color: transparent; border:0; color:black; text-align: center; font-size: 40px;" id="editableParagraph" rows="13" contenteditable="true" name="editableParagraph" ><?php
+        $idlocaltext = 5;
+        include "PhpPages/getFromDB.php"; //o data per pagina..cred
+        echo getContentFromDatabase($idlocaltext)//get text from the database ;
+        ?></textarea> 
+        <input type="text" id="id" name="id" hidden value="<?php echo $idlocaltext; // get id //o functie de php sa imi dea id-ul de la comment ?>">
+              <?php
+                if($userLoggedIn && $_SESSION['role'] == "admin"){
+                  echo'<button>Save</button>';           
+                }             
+              ?>
+      </form>
+  <br>  
  <img src="images/tywn_nailtips.jpg" alt="Nail Tips" width="700" height="600">  
 </div>
 
 <div class="footer">
 All rights reserved. &copy; Company NAILS101 2023.
 </div>
-<?php session_destroy(); ?>
+<script src="script.js"></script>  
 </body>
 </html>

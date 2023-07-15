@@ -18,7 +18,7 @@
     $hashedPassword = password_hash($s_password, PASSWORD_DEFAULT);
 
     // Insert the user data into the database
-    $sql = "INSERT INTO users (username, password, role) VALUES ('$s_username', '$hashedPassword', 'User')";
+    $sql = "INSERT INTO users (username, password, role) VALUES ('$s_username', '$hashedPassword', 'user')";
 
     if ($conn->query($sql) === TRUE) {
         header("Location: ../lab6.php");

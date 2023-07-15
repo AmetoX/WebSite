@@ -1,6 +1,6 @@
-<?php session_start();
- $_SESSION['user']='Admin';
- $_SESSION['user_image']='user_image.jpg';
+<?php
+  require("PhpPages/session_ini.php");
+  $_SESSION['current_page'] = 'sbs_nailprep.php';
 ?>
 
 <!DOCTYPE html>
@@ -9,6 +9,7 @@
   <title>NAILS101</title>
   <?php require "bootstrap.inc" ?>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" type="text/css" href="stylelog.css">
 </head>
 <body>
 
@@ -94,25 +95,46 @@
         </ul>
         <ul class="nav navbar-nav ml-auto">
             <li class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-				<?php 
-					echo isset($_SESSION['user'])? $_SESSION['user'] : 'User';
-				?>
-				</a>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <a href="#" class="dropdown-item">Reports</a>
-                    <a href="<?php echo isset($_SESSION['user']) ? 'settings.php' : 'signin.php'; ?>" class="dropdown-item">
-						<?php
-							echo isset($_SESSION['user']) ? 'Settings' : 'Sign in';		
-						?>
-					</a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#"class="dropdown-item">
-						<?php 
-							echo isset($_SESSION['user'])? 'Logout' : 'Login';
-						?>
-					</a>
-                </div>
+                <!-- Prima sectiune -->
+                  <section> 
+                    <?php
+                      if(!$userLoggedIn){
+                        echo '<button id="loginBtn" class="loginButton">Log In</button>';
+                      }else{
+                        echo '<a href="PhpPages/logout.php">Logout</a>';
+                      }
+                    ?>
+                  </section>
+                    <!-- A 2a sectiune Log In Window -->
+                <section>
+                  <div id="loginBox">
+                    <form method="post" action="PhpPages/login.php">
+                      <h2>Login</h2>
+                      <label for="username">Username:</label>
+                      <input type="text" id="username" autocomplete="username" name="logusername">
+                      <label for="password">Password:</label>
+                      <input type="password" id="password" name="logpassword">
+                      <input type="submit" value="Log in">
+                    </form>
+                    <button id="closeBtn">Close</button>
+                    <button id="signupBtn">Sign Up</button>
+                  </div>
+                </section>
+
+                <!-- A 3a sectiune Sign Up Window -->
+                <section>
+                <div id="signupBox" style="display: none;">
+                    <form method="post" action="PhpPages/signup.php">
+                      <h2>Sign Up</h2>
+                      <label for="newUsername">Username:</label>
+                      <input type="text" id="newUsername" name="newUsername" autocomplete="username">
+                      <label for="newPassword">Password:</label>
+                      <input type="password" id="newPassword" name="newPassword">
+                      <input type="submit" value="Log in">
+                    </form>
+                    <button id="closeSignupBtn">Close</button>
+                  </div>
+                </section>
             </li>
         </ul>
     </div>
@@ -121,33 +143,58 @@
 <div class="container" >
 
 	<h1>Steps for Nail Prep:</h1>
-	<?php $galerii = array(
-		array("Title" => "1. Cuticles", "Title_description" => "Start with your cuticles. They are often forgotten, but taking care of your cuticles will help your manicure stay on more firmly and gives you good access to your entire nail bed. Start with a Cuticle Remover, wait for a couple of minutes, then use a Cuticle Pusher or the Prep & Remove Pusher to gently push back your cuticles. Do this with the flat side. Then, gently go under the cuticle with the pointed side to remove dead skin cells or cut the dead skin with the Cuticle Nippers for a cleaner look. This will provide more surface area to paint your nails and allow you to get closer to your skin. That way, it won't look like you have any outgrowth. You also avoid painting over the cuticle and lifting the Gel Polish, which makes it come off faster.", "gallery_iamge" => "images/cuticles.jpg" ),
-		array("Title" => "2. Shape and Buff", "Title_description" => " Choose the nail shape that suits you and file your nails into that shape. Whether that is rounded or more square, it is important to file from the side of your nail towards the center each time. This is the best way for your nail to maintain its strength. Next you want to buff your nails with a fine Buffer. Having a smooth surface on your nails may give the polish more opportunity to lift. Having a buffed nail gives your nail bed texture and grit and something for the polish to adhere to. Be careful not to over buff. Your nails are very thin and delicate and filing the natural nail too much may cause damage.", "gallery_iamge" => "images/buffing.jpg" ),
-		array("Title" => "3. Cleanse", "Title_description" => "One of the main reasons your mani might lift is if there is any dirt or oil on your nail bed. Remember not all dirt and oil is visible!
-        Be careful if you have applied cuticle remover or washed your hands with soap and water before your manicure, as this can all cause residual oils to be left on the nail plate. You want to cleanse your nails of this dirt and oil. This will ensure that they are grease-free and there is no residual dirt or dead skin cells. The best way to do this is to take some solution called Cleanser on a Lint Free Wipe and wipe it over your nails.", "gallery_iamge" => "images/cleansing.jpg" ),
-        array("Title" => "4. Nail Dehydrator", "Title_description" => "Apply a very thin layer of Nail Dehydrator. Make sure not to touch the cuticles, but be sure to apply it to the top (free edge) of your nail. Let it Air Dry for 30-60 seconds. Works to remove or clean any nail dust, natural oil or fat and some other bateria on your natural nail plate, so that the nail gel bonds the nail surface better and stronger.", "gallery_iamge" => "images/dehydrator.jpg" ),
-        array("Title" => "5. Primer", "Title_description" => "Apply a very thin layer of Primer. Make sure not to touch the cuticles, but be sure to apply it to the top (free edge) of your nail. Let it Air Dry for 30-60 seconds. Primers will remove any remaining oils and grease on the nail plate, which can otherwise lead to your base coat not adhering to the nail. It also prevents the creation of any air bubbles for better adherence. ", "gallery_iamge" => "images/primer.jpg" ),
-        array("Title" => "6. Base Coat", "Title_description" => " Apply one layer of Base Coat. Make sure not to touch the cuticles, but be sure to apply it to the top (free edge) of your nail. Cure it in the UV lamp for 60 seconds. The Base Coat is the base layer for your Gel manicure. This product attaches itself well to the nail. It acts like double sided sticky tape that bonds to your nail plate and allows a tacky layer to bond the gel polish layers to until the topcoat. In addition, the Base Coat ensures that your nails do not discolour, peel, or lift easily, in other words, your nails are protected. It ensures a nice even nail, so the products stay in place.", "gallery_iamge" => "images/basecoat.jpg" ),
-	);
-	?>
+    <?php
+        $sql = "SELECT * FROM card2";
+
+        // Execute the query
+        $result = $conn->query($sql);
+
+        // Array to store the retrieved data
+        $galerii = [];
+
+        // Check if any rows were returned
+        if ($result->num_rows > 0) {
+            // Loop through each row and store the data in an array
+            while ($row = $result->fetch_assoc()) {
+                $card2 = [
+                    'id' => $row["id"],
+                    'Title' => $row["titlu"],                   
+                    'gallery_image' => $row["link_imagine"],
+                    'detailed_description' => $row["descriere"]
+                ];
+
+                // Add the card to the array
+                $galerii[] = $card2;
+            }
+        } 
+  ?>
 	<div class="col-sm-8">
-		<?php
+  <?php
 			$content="";
 			foreach ($galerii as $key => $value){
-				$content.="<h2>".$value["Title"]."</h2>";
-				$content.="<h5>".$value["Title_description"]."</h5>";
-				$content.="<div class=\"fakeimg\"><img src=\"".$value["gallery_iamge"]."\"></img></div>";
+        $idlocaltext = $value['id'];
+        $content.="<h2>".$value["Title"]."</h2>";       
+        $content.="<div class=\"fakeimg\"><img src=\"".$value["gallery_image"]."\"></img></div>";
+        if($userLoggedIn && $_SESSION['role'] === "admin"){
+          $content .='
+          <form method="post" action="PhpPages/save3.php">
+          <textarea style="width: 100%; height: 350px; background-color: transparent; border:0; color:black; font-size: 30px; " id="editableParagraph" contenteditable="true" name="editableParagraph" >'.$value["detailed_description"].'</textarea>   
+          <input type="text" id="id" name="id" hidden value="'.$idlocaltext.'">
+          <button>Save</button>      
+          </form>';
+        }else{
+          $content.="<h5>".$value["detailed_description"]."</h5>";
+        }
+        $content.='<br>';
 			}
 			echo $content;
 		?>
 	  </div>
   </div>
-</div>
 
 <div class="footer">
 All rights reserved. &copy; Company NAILS101 2023.
 </div>
-<?php session_destroy(); ?>
+<script src="script.js"></script>  
 </body>
 </html>

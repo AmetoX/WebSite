@@ -1,10 +1,6 @@
 <?php
-  session_start();
-  $userLoggedIn = false;
-  if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-      $userLoggedIn = true;
-  } 
-  require("PhpPages/db_inc.php");
+  require("PhpPages/session_ini.php");
+  $_SESSION['current_page'] = 'lab6.php';
 ?>
 
 <!DOCTYPE html>
@@ -118,7 +114,7 @@
                       <input type="text" id="username" autocomplete="username" name="logusername">
                       <label for="password">Password:</label>
                       <input type="password" id="password" name="logpassword">
-                      <input type="submit" value="Submit">
+                      <input type="submit" value="Log in">
                     </form>
                     <button id="closeBtn">Close</button>
                     <button id="signupBtn">Sign Up</button>
@@ -134,7 +130,7 @@
                       <input type="text" id="newUsername" name="newUsername" autocomplete="username">
                       <label for="newPassword">Password:</label>
                       <input type="password" id="newPassword" name="newPassword">
-                      <input type="submit" value="Submit">
+                      <input type="submit" value="Log in">
                     </form>
                     <button id="closeSignupBtn">Close</button>
                   </div>
@@ -155,7 +151,7 @@
           if(!$userLoggedIn){
             echo'disabled ';           
           }             
-        ?> style="width: 100%; height: 200px; background-color: transparent; border:0; color:black; tex" data-lang="1" id="editableParagraph" contenteditable="true" name="editableParagraph" ><?php
+        ?> style="width: 100%; height: 200px; background-color: transparent; border:0; color:black; tex"  id="editableParagraph" contenteditable="true" name="editableParagraph" ><?php
         $idlocaltext = 1;
         include "PhpPages/getFromDB.php"; //o data per pagina..cred
         echo getContentFromDatabase($idlocaltext)//get text from the database ;
@@ -210,11 +206,10 @@
         if($userLoggedIn && $_SESSION['role'] === "admin"){
           $content .='
           <form method="post" action="PhpPages/save2.php">
-          <textarea style="width: 100%; height: 200px; background-color: transparent; border:0; color:black; ;" data-lang="1" id="editableParagraph" contenteditable="true" name="editableParagraph" >'.$value["detailed_description"].'</textarea>   
+          <textarea style="width: 100%; height: 200px; background-color: transparent; border:0; color:black; font-size: 20px; "  id="editableParagraph" contenteditable="true" name="editableParagraph" >'.$value["detailed_description"].'</textarea>   
           <input type="text" id="id" name="id" hidden value="'.$idlocaltext.'">
-          <button>Save</button>
-          
-        </form>';
+          <button>Save</button>      
+          </form>';
         }else{
           $content.="<h5>".$value["detailed_description"]."</h5>";
         }

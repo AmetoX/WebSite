@@ -32,7 +32,7 @@ if ($result->num_rows > 0) {
         $_SESSION['name'] = $_POST['logusername'];
         $_SESSION['role'] = $row['role'];
         //$_SESSION['rol'] = $row['rol']; cauta exact numele coloanei
-        header("Location: ../lab6.php");
+        header("Location: ../".$_SESSION['current_page']);
     } else {
         // Password is incorrect        
         echo '<script type= "text/javascript">alert("Invalid pass"); window.location.href="../FirstWebSite.php";</script>';            

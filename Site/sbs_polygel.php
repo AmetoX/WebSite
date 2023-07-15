@@ -1,6 +1,6 @@
-<?php session_start();
- $_SESSION['user']='Admin';
- $_SESSION['user_image']='user_image.jpg';
+<?php
+  require("PhpPages/session_ini.php");
+  $_SESSION['current_page'] = 'sbs_polygel.php';
 ?>
 
 <!DOCTYPE html>
@@ -9,6 +9,7 @@
   <title>NAILS101</title>
   <?php require "bootstrap.inc" ?>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" type="text/css" href="stylelog.css">
 </head>
 <body>
 
@@ -94,63 +95,105 @@
         </ul>
         <ul class="nav navbar-nav ml-auto">
             <li class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-				<?php 
-					echo isset($_SESSION['user'])? $_SESSION['user'] : 'User';
-				?>
-				</a>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <a href="#" class="dropdown-item">Reports</a>
-                    <a href="<?php echo isset($_SESSION['user']) ? 'settings.php' : 'signin.php'; ?>" class="dropdown-item">
-						<?php
-							echo isset($_SESSION['user']) ? 'Settings' : 'Sign in';		
-						?>
-					</a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#"class="dropdown-item">
-						<?php 
-							echo isset($_SESSION['user'])? 'Logout' : 'Login';
-						?>
-					</a>
-                </div>
+                <!-- Prima sectiune -->
+                  <section> 
+                    <?php
+                      if(!$userLoggedIn){
+                        echo '<button id="loginBtn" class="loginButton">Log In</button>';
+                      }else{
+                        echo '<a href="PhpPages/logout.php">Logout</a>';
+                      }
+                    ?>
+                  </section>
+                    <!-- A 2a sectiune Log In Window -->
+                <section>
+                  <div id="loginBox">
+                    <form method="post" action="PhpPages/login.php">
+                      <h2>Login</h2>
+                      <label for="username">Username:</label>
+                      <input type="text" id="username" autocomplete="username" name="logusername">
+                      <label for="password">Password:</label>
+                      <input type="password" id="password" name="logpassword">
+                      <input type="submit" value="Log in">
+                    </form>
+                    <button id="closeBtn">Close</button>
+                    <button id="signupBtn">Sign Up</button>
+                  </div>
+                </section>
+
+                <!-- A 3a sectiune Sign Up Window -->
+                <section>
+                <div id="signupBox" style="display: none;">
+                    <form method="post" action="PhpPages/signup.php">
+                      <h2>Sign Up</h2>
+                      <label for="newUsername">Username:</label>
+                      <input type="text" id="newUsername" name="newUsername" autocomplete="username">
+                      <label for="newPassword">Password:</label>
+                      <input type="password" id="newPassword" name="newPassword">
+                      <input type="submit" value="Log in">
+                    </form>
+                    <button id="closeSignupBtn">Close</button>
+                  </div>
+                </section>
             </li>
         </ul>
     </div>
 </nav>
 <div class="container" >
+    <h1>Steps For Polygel With Reusable Dual Nail Tips:</h1>
+    <h2>&nbsp;&nbsp;1. Nail Prep</h2>
+    <?php
+        $sql = "SELECT * FROM card3";
 
-<h1>Steps For Polygel With Reusable Dual Nail Tips:</h1>
-<h2>1. Nail Prep </h2>
-	<?php $galerii = array(
-		array("Title" => "2. Reusable Dual Nail Tips", "Title_description" => " The trick with fitting dual tip is that you need to rise the dual tip up a bit and then to make sure it fits from sidewall to sidewall. The reason you need to rise up the form slightly is you need to save some space for the product to lie in it.
-        The way you need to hold it and rise the free end for about 10-degree Engle. Check if all ten fingernails has a fitting dual tip.", "gallery_iamge" => "images/dualtips.jpg" ),
-		array("Title" => "3. Apply Polygel To The Reusable Dual Nail Tips", "Title_description" => "Take a medium-sized bead with a gel brush and wet your brush with slip solution. And then use the brush to place the bead on the inner side of the dual tip, move it gently and create the length of the nail.
-        Fill sides and check if there is no product missing (don't make it too thin or too thick). After preparing the dual tip gently apply the dual tip to 2/3 of the nail, do not do it all the way to the cuticle. 
-        Then cure in an LED/UV lamp for 60-120 sec. You can use a nail clipper for more support when curing.", "gallery_iamge" => "images/fill_dualtips.jpg" ),
-        array("Title" => "4. Polygel Overlay", "Title_description" => "You can gently use a pinching tool on the sides of the dual tip, and it will pop off. After removing the dual tip take a bead of polygel and apply it to the nail and lightly pillow the bead as close to the cuticle area without actually touching it.
-        Then, gently bring it down to the tip and cure the nails in the LED/UV lamp again. After the polygel is set, take a lint free wipe dipped in alcohol and wipe the nails on the top and bottom to remove the stiky part.", "gallery_iamge" => "images/polygel_overlay.jpg" ),
-        array("Title" => "5. Shape And Buff", "Title_description" => " Buff the surface. Then shape the nail as you like. When you're happy with the form you achieved, you should brush the dust off your nails and hand. After that take a lint free wipe dipped in alcohol and wipe the nails to make sure there's no dust remaining on the nail. ", "gallery_iamge" => "images/nail_shapes.jpg" ),
-        array("Title" => "6. Color And Top Coat", "Title_description" => "  Choose a color you want, after applying it, cure the nails in the LED/UV lamp 60 seconds. You may need more than 1 coat. Then pick your top coat, apply it and cure it in the LED/UV lamp for 60-120 seconds.", "gallery_iamge" => "images/topcoat.jpg" ),
-        array("Title" => "7. Cuticle Oil", "Title_description" => " Apply the cuticle oil on the cuticles and then massage it until it gets in your skin.", "gallery_iamge" => "images/cuticle_oil.jpg" ),
-	);
-	?>
+        // Execute the query
+        $result = $conn->query($sql);
+
+        // Array to store the retrieved data
+        $galerii = [];
+
+        // Check if any rows were returned
+        if ($result->num_rows > 0) {
+            // Loop through each row and store the data in an array
+            while ($row = $result->fetch_assoc()) {
+                $card3 = [
+                    'id' => $row["id"],
+                    'Title' => $row["titlu"],                    
+                    'gallery_image' => $row["link_imagine"],
+                    'detailed_description' => $row["descriere"]
+                ];
+
+                // Add the card to the array
+                $galerii[] = $card3;
+            }
+        } 
+  ?>
 	<div class="col-sm-8">
-		<?php
+  <?php
 			$content="";
 			foreach ($galerii as $key => $value){
-				$content.="<h2>".$value["Title"]."</h2>";
-				$content.="<h5>".$value["Title_description"]."</h5>";
-				$content.="<div class=\"fakeimg\"><img src=\"".$value["gallery_iamge"]."\"></img></div>";
+        $idlocaltext = $value['id'];
+        $content.="<h2>".$value["Title"]."</h2>";       
+        $content.="<div class=\"fakeimg\"><img src=\"".$value["gallery_image"]."\"></img></div>";
+        if($userLoggedIn && $_SESSION['role'] === "admin"){
+          $content .='
+          <form method="post" action="PhpPages/save4.php">
+          <textarea style="width: 100%; height: 250px; background-color: transparent; border:0; color:black; font-size: 30px; " id="editableParagraph" contenteditable="true" name="editableParagraph" >'.$value["detailed_description"].'</textarea>   
+          <input type="text" id="id" name="id" hidden value="'.$idlocaltext.'">
+          <button>Save</button>      
+          </form>';
+        }else{
+          $content.="<h5>".$value["detailed_description"]."</h5>";
+        }
+        $content.='<br>';
 			}
 			echo $content;
 		?>
-	  </div>
   </div>
 </div>
 
 <div class="footer">
 All rights reserved. &copy; Company NAILS101 2023.
 </div>
-<?php session_destroy(); ?>
+<script src="script.js"></script>  
 </body>
 </html>

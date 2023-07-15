@@ -117,7 +117,7 @@
                       <input type="text" id="username" autocomplete="username" name="logusername">
                       <label for="password">Password:</label>
                       <input type="password" id="password" name="logpassword">
-                      <input type="submit" value="Submit">
+                      <input type="submit" value="Log in">
                     </form>
                     <button id="closeBtn">Close</button>
                     <button id="signupBtn">Sign Up</button>
@@ -133,7 +133,7 @@
                       <input type="text" id="newUsername" name="newUsername" autocomplete="username">
                       <label for="newPassword">Password:</label>
                       <input type="password" id="newPassword" name="newPassword">
-                      <input type="submit" value="Submit">
+                      <input type="submit" value="Log in">>
                     </form>
                     <button id="closeSignupBtn">Close</button>
                   </div>
@@ -143,27 +143,30 @@
     </div>
 </nav>
 
-<div class="container"  >
-<form method="post" action="PhpPages/save.php">
-  <textarea <?php
-          if(!$userLoggedIn || $_SESSION['role'] !== "admin"){
-            echo'disabled ';           
-          }             
-        ?>style="width: 100%;  background-color: transparent; border:0; color:black; text-align: center; font-size: 40px;" data-lang="1" id="editableParagraph" rows="12" contenteditable="true" name="editableParagraph" ><?php
-  $idlocaltext = 3;
-  include "PhpPages/getFromDB.php"; //o data per pagina..cred
-  echo getContentFromDatabase($idlocaltext)//get text from the database ;
-  ?></textarea> 
-  <input type="text" id="id" name="id" hidden value="<?php echo $idlocaltext; // get id //o functie de php sa imi dea id-ul de la comment ?>">
-        <?php
-          if($userLoggedIn && $_SESSION['role'] == "admin"){
-            echo'<button>Save</button>';           
-          }             
-        ?>
-</form>
+<div class="container">
+      <form method="post" action="PhpPages/save.php">
+        <textarea <?php
+                if(!$userLoggedIn || $_SESSION['role'] !== "admin"){
+                  echo'disabled ';           
+                }             
+              ?>style="width: 100%;  background-color: transparent; border:0; color:black; text-align: center; font-size: 40px;" id="editableParagraph" rows="12" contenteditable="true" name="editableParagraph" ><?php
+        $idlocaltext = 2;
+        include "PhpPages/getFromDB.php"; //o data per pagina..cred
+        echo getContentFromDatabase($idlocaltext)//get text from the database ;
+        ?></textarea> 
+        <input type="text" id="id" name="id" hidden value="<?php echo $idlocaltext; // get id //o functie de php sa imi dea id-ul de la comment ?>">
+              <?php
+                if($userLoggedIn && $_SESSION['role'] == "admin"){
+                  echo'<button>Save</button>';           
+                }             
+              ?>
+      </form>
   <br>
- <img src="images/tywn_nailprep.jpg" alt="Nail Prep" width="700" height="600" d>  
+  <div style="display:flex; justify-content:center;">
+    <img src="images/tywn_nailprep.jpg" alt="Nail Prep" width="700" height="600">  
+  </div>
 </div>
+
 
 <div class="footer">
 All rights reserved. &copy; Company NAILS101 2023.
